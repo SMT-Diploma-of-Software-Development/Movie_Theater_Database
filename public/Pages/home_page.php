@@ -38,7 +38,7 @@ require_once '../../private/initialize.php';
         <span class="w3-jumbo w3-hide-small">Movie Theater</span><br>
         <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
         <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Start Search</a></p>
-    </div> 
+    </div>
     <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
         <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -59,16 +59,16 @@ require_once '../../private/initialize.php';
             </div>
 
             <form class="w3-container" action="<?php echo url_for_public('/Pages/search_movie.php'); ?>" method="post">
-                <p>      
+                <p>
                     <label class="w3-text-brown"><b>Title</b></label>
                     <input class="w3-input w3-border w3-sand" name="title" type="text"></p>
-                <p>      
+                <p>
                     <label class="w3-text-brown"><b>Rating</b></label>
                     <input class="w3-input w3-border w3-sand" name="rating" type="text"></p>
-                <p>      
+                <p>
                     <label class="w3-text-brown"><b>Year</b></label>
                     <input class="w3-input w3-border w3-sand" name="year" type="text"></p>
-                <p>      
+                <p>
                     <label class="w3-text-brown"><b>genre</b></label>
                     <input class="w3-input w3-border w3-sand" name="genre" type="text"></p>
                 <p>
@@ -85,6 +85,7 @@ require_once '../../private/initialize.php';
     <p class="w3-center w3-large">Top ten searched movie</p>
     <div class="w3-row-padding w3-grayscale" style="margin-top:64px" align="center">
         <?php require 'top_ten_chart.php'; ?>
+        <!-- <img src="chart.png" class="w3-image w3-greyscale" style="width:100%;margin-top:48px"> -->
         <br>
         <a href="<?php echo url_for_public('/Pages/top_ten_list.php'); ?>" class="w3-button w3-light-grey">Top Ten List</a>
     </div>
@@ -117,7 +118,7 @@ require_once '../../private/initialize.php';
                 </button>
             </p>
         </form>
-        
+
         <img src="../img/theater.png" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
     </div>
 </div>

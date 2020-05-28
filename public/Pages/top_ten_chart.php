@@ -1,4 +1,5 @@
 
+<link rel="stylesheet" href="<?php echo url_for_public('/CSS/style.css'); ?>">
 <?php
 
 require_once '../../private/initialize.php';
@@ -106,6 +107,6 @@ imagestring($chart, $fontSize, 0, 10, "Search times", $axisColor);
 imagestring($chart, $fontSize, 500, 550, "Movies", $axisColor);
 
 imagepng($chart, "chart.png");
-echo "<img src='chart.png'>";
+echo "<img src='chart.png' class='w3-image w3-greyscale' style='width:100%;margin-top:48px'>";
 imagedestroy($chart);
 ?>
