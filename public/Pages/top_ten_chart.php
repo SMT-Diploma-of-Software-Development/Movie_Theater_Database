@@ -107,6 +107,7 @@ imagestring($chart, $fontSize, 0, 10, "Search times", $axisColor);
 imagestring($chart, $fontSize, 500, 550, "Movies", $axisColor);
 
 imagepng($chart, "chart.png");
-echo "<img src='chart.png' class='w3-image w3-greyscale' style='width:100%;margin-top:48px'>";
+echo "<img src='chart.png' style='width:100%' onclick='onClick(this)' class='w3-hover-opacity' alt='Top ten Chart'>";
+
 imagedestroy($chart);
 ?>
