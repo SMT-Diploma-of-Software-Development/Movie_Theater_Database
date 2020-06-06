@@ -34,8 +34,9 @@ try {
     $mail->setFrom('asunaanusa@gmail.com');
 
     while ($membership = mysqli_fetch_assoc($membership_set)) {
-
-        $mail->addAddress($membership['email']);     // Add a recipient
+        if ($membership['newsflash'] == 1) {
+            $mail->addAddress($membership['email']);     // Add a recipient
+        }
     }
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Subscribe content';
