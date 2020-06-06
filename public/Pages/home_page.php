@@ -12,8 +12,9 @@ require_once '../../private/initialize.php';
         <a href="#home" class="w3-bar-item w3-button w3-wide">Home</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
-            <a href="#search" class="w3-bar-item w3-button">Search movie</a>
-            <a href="#topten" class="w3-bar-item w3-button"><i class="fa fa-user"></i>Top ten</a>
+            <a href="<?php echo url_for_public('/Pages/sign_up.php'); ?>" class="w3-bar-item w3-button"><i class="fa fa-user"></i>Sign Up</a>
+            <a href="#search" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Search movie</a>
+            <a href="#topten" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Top ten</a>
             <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon (Responsive) -->
@@ -27,6 +28,7 @@ require_once '../../private/initialize.php';
 <!-- Sidebar on small screens when clicking the menu icon (Responsive     Hide content on medium screens (larger than 601px)) -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="<?php echo url_for_public('/Pages/sign_up.php'); ?>" onclick="w3_close()" class="w3-bar-item w3-button">Sign Up</a>
     <a href="#search" onclick="w3_close()" class="w3-bar-item w3-button">Search movie</a>
     <a href="#topten" onclick="w3_close()" class="w3-bar-item w3-button">Top ten</a>
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
@@ -96,7 +98,7 @@ require_once '../../private/initialize.php';
 <div id="modal01" class="w3-modal w3-white" onclick="this.style.display='none'">
   <!-- <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright w3-hover-red" title="Close Modal Image">×</span> -->
   <div class="w3-modal-content w3-animate-zoom w3-left w3-transparent w3-padding-64">
-    <img id="img01" class="style="width:100%"">
+    <img id="img01" class="style='width:100%'">
     <p id="caption" class="w3-opacity w3-medium w3-center"></p>
   </div>
 </div>
