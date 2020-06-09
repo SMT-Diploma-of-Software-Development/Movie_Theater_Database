@@ -5,13 +5,18 @@ if (is_post_request()) {
 //    $membership = [];
 //    $membership['username'] = $_POST['username'];
 //    $membership['email'] = $_POST['email'];
+    $error = validate_email($_POST['email']);
 
-    $membership = find_membership_by_email($_POST['email']);
-    if ($membership != null) {
-        sendUnsubscribeMail($membership['email']);
-        redirect_to(url_for_public('/Pages/home_page.php'));
-    }else{
-        redirect_to(url_for_public('/Pages/home_page.php'));
+    if (!empty($error)) {
+        $errors = $error;
+    } else {
+        $membership = find_membership_by_email($_POST['email']);
+        if ($membership != null) {
+            sendUnsubscribeMail($membership['email']);
+            redirect_to(url_for_public('/Pages/home_page.php'));
+        } else {
+            redirect_to(url_for_public('/Pages/home_page.php'));
+        }
     }
 }
 
@@ -25,7 +30,7 @@ require SHARED_PATH . '/page_header.php';
     <div class="imgcontainer">
         <img src="../img/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
-    <?php // echo display_errors($errors); ?>
+    <?php echo display_errors($errors); ?>
     <div class="container">
 
         <label for="email"><b>Email</b></label>
