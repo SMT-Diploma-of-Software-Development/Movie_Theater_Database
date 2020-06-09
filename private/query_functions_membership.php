@@ -41,7 +41,18 @@ function validate_membership($membership) {
     } else {
         $errors[] = "Email must match XXX@XXX.com or XXX@XXX.net or XXX@XXX.com.au. No hypen no space";
     }
+    return $errors;
+}
 
+function validate_email($email) {
+    $errors = [];
+
+    $emailPattern = '/^[\w.]+@{1}[\w.]+\.(com|net|com.au)$/';
+    if (preg_match($emailPattern, $email)) {
+        
+    } else {
+        $errors[] = "Email must match XXX@XXX.com or XXX@XXX.net or XXX@XXX.com.au. No hypen no space";
+    }
     return $errors;
 }
 
