@@ -21,17 +21,17 @@ try {
     // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->SMTPDebug = 0;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host = 'smtp.sendgrid.net';                    // Set the SMTP server to send through
+    $mail->Host = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth = true;                                   // Enable SMTP authentication
 
-    $mail->Username = 'asunaanusa@gmail.com';                     // SMTP username
-    $mail->Password = 'RADtest1510';                               // SMTP password
+    $mail->Username = 'radt33346@gmail.com';                     // SMTP username
+    $mail->Password = '1234@test';                               // SMTP password
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->SMTPSecure = 'TLS';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
     // $mail->SMTPSecure = 'ssl';
     //Recipients
-    $mail->setFrom('asunaanusa@gmail.com');
+    $mail->setFrom('radt33346@gmail.com');
 
     while ($membership = mysqli_fetch_assoc($membership_set)) {
         if ($membership['newsflash'] == 1) {
