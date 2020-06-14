@@ -19,19 +19,20 @@ $mail = new PHPMailer(true);
 try {
     //Server settings
     // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->SMTPDebug = 0;                      // Enable verbose debug output
+    $mail->SMTPDebug = 1;                      // Disable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth = true;                                   // Enable SMTP authentication
 
-    $mail->Username = 'radt33346@gmail.com';                     // SMTP username
-    $mail->Password = '1234@test';                               // SMTP password
+    $mail->Username = 'asunaanusa@gmail.com';                     // SMTP username
+    $mail->Password = 'qpzrqgwxtxegjzqg';           // SMTP password
+    
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->SMTPSecure = 'TLS';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
     // $mail->SMTPSecure = 'ssl';
     //Recipients
-    $mail->setFrom('radt33346@gmail.com');
+    $mail->setFrom('asunaanusa@gmail.com');
 
     while ($membership = mysqli_fetch_assoc($membership_set)) {
         if ($membership['monthly_newsletter'] == 1) {
@@ -50,7 +51,7 @@ try {
     // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
     // Content
-//    echo 'Message has been sent';
+    echo 'Message has been sent';
 } catch (Exception $e) {
 //    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
