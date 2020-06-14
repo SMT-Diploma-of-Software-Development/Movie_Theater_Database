@@ -5,8 +5,9 @@ require_once '../../private/initialize.php';
 
 <!-- insert page header -->
 <?php require SHARED_PATH . '/page_header.php'; ?>
-
+<!--<meta http-equiv="refresh" content="1" >--> 
 <!-- Navbar (sit on top) (Responsive (less than 601px hide bar)) -->
+<!--<meta http-equiv="refresh" content="2" >--> 
 <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
         <a href="#home" class="w3-bar-item w3-button w3-wide">Home</a>
@@ -84,23 +85,27 @@ require_once '../../private/initialize.php';
 <!-- Top Ten Section -->
 <div class="w3-container" style="padding:128px 16px" id="topten">
     <h2 class="w3-center">Top Ten</h2>
-    <p class="w3-center w3-large">Top ten searched movie</p>
+    <p class="w3-center w3-large">Top ten movie</p>
     <div class="w3-row-padding w3-grayscale" style="margin-top:64px" align="center">
-        <?php require 'top_ten_chart.php'; ?>
+        <div id="topTenChart">
+            <?php require 'top_ten_chart.php'; ?>
+        </div>
+
 
         <br>
         <a href="<?php echo url_for_public('/Pages/top_ten_list.php'); ?>" class="w3-button w3-light-grey">Top Ten List</a>
+
     </div>
 </div>
 
 <!-- Modal for full size images on click-->
 
-<div id="modal01" class="w3-modal w3-white" onclick="this.style.display='none'">
+<div id="modal01" class="w3-modal w3-white" onclick="this.style.display = 'none'">
   <!-- <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright w3-hover-red" title="Close Modal Image">×</span> -->
-  <div class="w3-modal-content w3-animate-zoom w3-left w3-transparent w3-padding-64">
-    <img id="img01" class="style='width:100%'">
-    <p id="caption" class="w3-opacity w3-medium w3-center"></p>
-  </div>
+    <div class="w3-modal-content w3-animate-zoom w3-left w3-transparent w3-padding-64">
+        <img id="img01" class="style='width:100%'">
+        <p id="caption" class="w3-opacity w3-medium w3-center"></p>
+    </div>
 </div>
 
 <!-- Contact Section -->
@@ -127,5 +132,17 @@ require_once '../../private/initialize.php';
         <img src="../img/theater.png" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
     </div>
 </div>
+
+<script>
+
+
+    var $topTenChart = $("#topTenChart");
+    setInterval(function () {
+//        $("#topTenImg").remove();
+        $topTenChart.load("<?php echo url_for_public('/Pages/top_ten_chart.php'); ?>");
+    }, 1000);
+
+
+</script>
 
 <?php require SHARED_PATH . '/page_footer.php'; ?>

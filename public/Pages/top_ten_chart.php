@@ -1,15 +1,19 @@
-
-<link rel="stylesheet" href="<?php echo url_for_public('/CSS/style.css'); ?>">
 <?php
-
 require_once '../../private/initialize.php';
-
-$result = find_top_ten_movies();
+require SHARED_PATH . '/page_header.php';
+?>
+<?php
+$topTen = find_top_ten_movies();
 $topTenArray = [];
 $i = 1;
-while ($movie = mysqli_fetch_assoc($result)) {
+$maxValue;
+while ($movie = mysqli_fetch_assoc($topTen)) {
+    //cut movie title to short string
     $title = substr($movie['title'], 0, 11) . ".." . $i;
-    $topTenArray['"' . $title . '"'] = $movie['search_times'];
+    $topTenArray['"' . $title . '"'] = $movie['finalRating'];
+    if ($i == 1) {
+        $maxValue = $movie['finalRating'];
+    }
     $i++;
 }
 
@@ -37,10 +41,11 @@ $fontSize = 10;
 $labelMargin = 8;
 
 // Max value on y-axis
-$yMaxValue = 50;
+//$yMaxValue = (int) ($maxValue / 10) * 10 + 10;
+$yMaxValue = 5;
 
 // Distance between grid lines on y-axis
-$yLabelSpan = 10;
+$yLabelSpan = 1;
 
 // Init image
 $chart = imagecreate($imageWidth, $imageHeight);
@@ -103,11 +108,19 @@ foreach ($topTenArray as $key => $value) {
 }
 
 //draw axis title
-imagestring($chart, $fontSize, 0, 10, "Search times", $axisColor);
+imagestring($chart, $fontSize, 0, 10, "Rating", $axisColor);
 imagestring($chart, $fontSize, 500, 550, "Movies", $axisColor);
 
-imagepng($chart, "chart.png");
-echo "<img src='chart.png' style='width:100%' onclick='onClick(this)' class='w3-hover-opacity' alt='Top ten Chart'>";
+$currentTime = time();
+//$imgName = 'chart' . $currentTime . '.png';
+$imgName = 'chart.png';
+imagepng($chart, $imgName);
+echo "<img src='" . $imgName . "?" . time() . "' style='width:100%'' onclick='onClick(this)' class='w3-hover-opacity' alt='Top ten Chart' id='topTenImg'>";
 
 imagedestroy($chart);
+?>
+</body>
+</html>
+<?php
+db_disconnect($db);
 ?>

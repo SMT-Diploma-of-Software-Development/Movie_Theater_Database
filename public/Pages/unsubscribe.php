@@ -5,10 +5,10 @@ if (is_post_request()) {
 //    $membership = [];
 //    $membership['username'] = $_POST['username'];
 //    $membership['email'] = $_POST['email'];
-    $error = validate_email($_POST['email']);
+    $topTen = validate_email($_POST['email']);
 
-    if (!empty($error)) {
-        $errors = $error;
+    if (!empty($topTen)) {
+        $errors = $topTen;
     } else {
         $membership = find_membership_by_email($_POST['email']);
         if ($membership != null) {
