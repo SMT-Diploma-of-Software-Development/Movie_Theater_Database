@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2020 at 03:20 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.8
+-- Generation Time: Jun 14, 2020 at 10:48 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `movie_database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`id`, `username`, `password`) VALUES
+(2, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -2377,6 +2396,12 @@ INSERT INTO `movies` (`id`, `title`, `studio`, `status`, `sound`, `versions`, `r
 --
 
 --
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `membership`
 --
 ALTER TABLE `membership`
@@ -2391,6 +2416,12 @@ ALTER TABLE `movies`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `movies`
