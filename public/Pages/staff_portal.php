@@ -4,8 +4,7 @@ require_once '../../private/initialize.php';
 require_once '../../private/query_functions_portal.php';
 require_once '../../private/staff_portal_auth.php';
 
-//check if it is admin
-if($_SESSION['account']['username']=='admin'){
+if ($_SESSION['account']['username'] == "admin") {
     header("Location: staff_portal_admin.php");
     exit();
 }
@@ -20,7 +19,9 @@ if($_SESSION['account']['username']=='admin'){
         <a href="#home" class="w3-bar-item w3-button w3-wide">Home</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
+        <a href="staff_portal_admin.php" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Admin</a>
         <a href="#member" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Member</a>
+        <a href="staff_portal_logout.php" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Logout</a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon (Responsive) -->
 

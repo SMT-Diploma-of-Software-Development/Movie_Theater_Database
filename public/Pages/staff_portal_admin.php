@@ -3,6 +3,11 @@
 require_once '../../private/initialize.php';
 require_once '../../private/query_functions_portal.php';
 require_once '../../private/staff_portal_auth.php';
+
+if ($_SESSION['account']['username'] != "admin") {
+    header("Location: staff_portal.php");
+    exit();
+}
 ?>
 
 <!-- insert page header -->
@@ -14,9 +19,11 @@ require_once '../../private/staff_portal_auth.php';
         <a href="#home" class="w3-bar-item w3-button w3-wide">Home</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
+            <a href="staff_portal.php" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Staff</a>
             <a href="#user" class="w3-bar-item w3-button"><i class="fa fa-th"></i>User</a>
             <a href="#register" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Register</a>
             <a href="#member" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Member</a>
+            <a href="staff_portal_logout.php" class="w3-bar-item w3-button"><i class="fa fa-th"></i>Logout</a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon (Responsive) -->
 
@@ -96,12 +103,12 @@ require_once '../../private/staff_portal_auth.php';
                 <h2>Users</h2>
             </div>
             <?php
-            if (isset($_POST['username'])) {
-                register($_POST['username'], $_POST['password']);
+            if (isset($_POST['staff_username'])) {
+                register($_POST['staff_username'], $_POST['staff_password']);
             } ?>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="login" style="border:none">
-                <input type="text" name="username" placeholder="Username" required />
-                <input type="password" name="password" placeholder="Password" required />
+                <input type="text" name="staff_username" placeholder="Username" required />
+                <input type="password" name="staff_password" placeholder="Password" required />
                 <input name="submit" type="submit" value="Register" />
             </form>
         </div>
@@ -121,8 +128,8 @@ require_once '../../private/staff_portal_auth.php';
             </div>
 
             <?php
-            if (isset($_POST['username'])) {
-                deleteMember($_POST['username'], $_POST['email']);
+            if (isset($_POST['member_username'])) {
+                deleteMember($_POST['member_username'], $_POST['member_email']);
             }
 
             $result = getMembers();
@@ -143,8 +150,8 @@ require_once '../../private/staff_portal_auth.php';
                     <td>" . $member['newsflash'] . "</td>
                     <td>
                     <form action='" . $_SERVER['PHP_SELF'] . "'method='post' name='delete' style='border:none'> 
-                    <input type='hidden' name='username' value='" . $member['username'] . "' />
-                    <input type='hidden' name='email' value='" . $member['email'] . "' />
+                    <input type='hidden' name='member_username' value='" . $member['username'] . "' />
+                    <input type='hidden' name='member_email' value='" . $member['email'] . "' />
                     <input name='submit' type='submit' value='Delete' />
                     </form>
                     </td>

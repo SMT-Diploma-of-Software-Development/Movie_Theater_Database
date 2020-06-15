@@ -1,6 +1,7 @@
 <?php
 // require needed funcionts
 require_once '../../private/initialize.php';
+require_once '../../private/query_functions_portal.php';
 ?>
 
 <!-- insert page header -->
@@ -27,7 +28,6 @@ require_once '../../private/initialize.php';
 
         <?php
         session_start();
-        require_once '../../private/query_functions_portal.php';
 
         //check session
         if(isset($_SESSION['account'])){
