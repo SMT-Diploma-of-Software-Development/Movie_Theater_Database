@@ -27,23 +27,7 @@ function find_all_movies() {
 
 function find_movie_by_info($title, $rating, $year, $genre) {
     global $db;
-
-    $sql = "SELECT * FROM movies ";
-    $sql .= "WHERE id=id ";
-
-    if (!empty($title)) {
-        $sql .= "AND title='" . db_escape($db, $title) . "' ";
-    }
-    if (!empty($rating)) {
-        $sql .= "AND rating='" . db_escape($db, $rating) . "' ";
-    }
-    if (!empty($year)) {
-        $sql .= "AND year='" . db_escape($db, $year) . "' ";
-    }
-    if (!empty($genre)) {
-        $sql .= "AND genre='" . db_escape($db, $genre) . "' ";
-    }
-
+    $sql = "SELECT * FROM movies WHERE (Title LIKE '%".$title."%') AND (Genre LIKE '%".$genre."%') AND (Rating LIKE '%".$rating."%') AND (Year LIKE '%".$year."%')";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
