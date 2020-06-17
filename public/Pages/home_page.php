@@ -5,9 +5,9 @@ require_once '../../private/initialize.php';
 
 <!-- insert page header -->
 <?php require SHARED_PATH . '/page_header.php'; ?>
-<!--<meta http-equiv="refresh" content="1" >--> 
+<!--<meta http-equiv="refresh" content="1" >-->
 <!-- Navbar (sit on top) (Responsive (less than 601px hide bar)) -->
-<!--<meta http-equiv="refresh" content="2" >--> 
+<!--<meta http-equiv="refresh" content="2" >-->
 <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
         <a href="#home" class="w3-bar-item w3-button w3-wide">Home</a>
@@ -132,17 +132,17 @@ require_once '../../private/initialize.php';
         <img src="../img/theater.png" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
-
     var $topTenChart = $("#topTenChart");
     setInterval(function () {
 //        $("#topTenImg").remove();
+    $topTenChart.hide();
+    $topTenChart.fadeIn( "slow", function() {});
         $topTenChart.load("<?php echo url_for_public('/Pages/top_ten_chart.php'); ?>");
-    }, 1000);
-
-
+    }, 5000);
+    $topTenChart.hide();
+    $topTenChart.fadeIn( "slow", function() {});
 </script>
 
 <?php require SHARED_PATH . '/page_footer.php'; ?>
