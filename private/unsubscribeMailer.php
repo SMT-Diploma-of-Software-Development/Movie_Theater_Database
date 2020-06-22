@@ -10,7 +10,8 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 // Instantiation and passing `true` enables exceptions
-function sendUnsubscribeMail($email) {
+function sendUnsubscribeMail($email)
+{
     $mail = new PHPMailer(true);
 
     try {

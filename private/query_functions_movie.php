@@ -1,6 +1,10 @@
 <?php
 
-function find_movie_by_ID($ID) {
+/**
+ * find movie by ID
+ */
+function find_movie_by_ID($ID)
+{
     global $db;
 
     $sql = "SELECT * FROM movies ";
@@ -13,8 +17,11 @@ function find_movie_by_ID($ID) {
     return $movie; // returns an assoc. array
 }
 
-// Find all movies
-function find_all_movies() {
+/**
+ * find all movies
+ */
+function find_all_movies()
+{
     global $db;
 
     $sql = "SELECT * FROM movies ";
@@ -25,20 +32,27 @@ function find_all_movies() {
     return $result;
 }
 
-function find_movie_by_info($title, $rating, $year, $genre) {
+/**
+ * find movie by title, rating, year, genre
+ */
+function find_movie_by_info($title, $rating, $year, $genre)
+{
     global $db;
-    $sql = "SELECT * FROM movies WHERE (Title LIKE '%".$title."%') AND (Genre LIKE '%".$genre."%') AND (Rating LIKE '%".$rating."%') AND (Year LIKE '%".$year."%')";
+    $sql = "SELECT * FROM movies WHERE (Title LIKE '%" . $title . "%') AND (Genre LIKE '%" . $genre . "%') AND (Rating LIKE '%" . $rating . "%') AND (Year LIKE '%" . $year . "%')";
+
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
 }
 
-function find_top_ten_movies() {
+/**
+ * find top ten movie
+ */
+function find_top_ten_movies()
+{
     global $db;
 
-//SET @max=(SELECT MAX(search_times) FROM movies);
-//SET @min=(SELECT MIN(search_times) FROM movies);
-//SELECT *,ROUND(((search_times-@min)/((@max-@min)/5)*0.4+clients_rating*0.6),1) AS test FROM movies ORDER BY ROUND(((search_times-@min)/((@max-@min)/5)*0.4+clients_rating*0.6),1) DESC,id LIMIT 10
+
     $sql = "SET @max=(SELECT MAX(search_times) FROM movies); ";
     $sql .= "SET @min=(SELECT MIN(search_times) FROM movies); ";
     $sql .= "SELECT *,ROUND(((search_times-@min)/((@max-@min)/5)*0.4+clients_rating*0.6),1) AS finalRating FROM movies ORDER BY ROUND(((search_times-@min)/((@max-@min)/5)*0.4+clients_rating*0.6),1) DESC,id LIMIT 10";
@@ -59,14 +73,13 @@ function find_top_ten_movies() {
             //Prepare next result set
         } while (mysqli_next_result($db));
     }
-
-
-//    $result = mysqli_query($db, $sql);
-//    confirm_result_set($result);
-//    return $result;
 }
 
-function update_search_times($id) {
+/**
+ * update movie's search time
+ */
+function update_search_times($id)
+{
     global $db;
 
     $sql = "UPDATE movies SET search_times=search_times+1 ";
@@ -82,7 +95,11 @@ function update_search_times($id) {
     }
 }
 
-function update_clients_rating($id, $rating) {
+/**
+ * update movie's rating
+ */
+function update_clients_rating($id, $rating)
+{
     global $db;
 
     $sql = "UPDATE movies SET clients_rating='" . db_escape($db, $rating) . "' ";
@@ -98,7 +115,11 @@ function update_clients_rating($id, $rating) {
     }
 }
 
-function update_evaluated_times($id) {
+/**
+ * update movie's evaluate time 
+ */
+function update_evaluated_times($id)
+{
     global $db;
 
     $sql = "UPDATE movies SET evaluated_times = evaluated_times+1 ";
@@ -114,7 +135,11 @@ function update_evaluated_times($id) {
     }
 }
 
-function max_searched_times() {
+/**
+ * find max search time of movie
+ */
+function max_searched_times()
+{
     global $db;
 
     $sql = "SELECT MAX(search_times) AS search_times FROM movies";
@@ -122,8 +147,11 @@ function max_searched_times() {
     $row = mysqli_fetch_array($result);
     return $row['search_times'];
 }
-
-function min_searched_times() {
+/**
+ * find max search time of movie
+ */
+function min_searched_times()
+{
     global $db;
 
     $sql = "SELECT MIN(search_times) AS search_times FROM movies";

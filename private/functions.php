@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * return target URL inside public folder
+ */
 function url_for_public($script_path)
 {
     // add the leading '/' if not present
@@ -52,12 +55,17 @@ function error_500()
     exit();
 }
 
+/**
+ * display error with HTML form
+ */
 function display_errors($errors = array())
 {
     $output = '';
     if (!empty($errors)) {
-        $output .= "<div class=\"errors\">";
-        $output .= "Input format error, please fix the following errors:";
+        $output .= "<div id=\"errors\" tabindex='0'>";
+        $output .= "Input format error, please fix the following errors.";
+        $output .= "</div>";
+        $output .= "<div id=\"listError\"  tabindex='0'>";
         $output .= "<ul>";
         foreach ($errors as $error) {
             $output .= "<li>" . h($error) . "</li>";

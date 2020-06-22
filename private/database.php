@@ -7,6 +7,9 @@
 
 require_once 'db_credentials.php';
 
+/**
+ * database connection
+ */
 function db_connect()
 {
     $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
@@ -14,6 +17,9 @@ function db_connect()
     return $connection;
 }
 
+/**
+ * database disconnection
+ */
 function db_disconnect($connection)
 {
     if (isset($connection)) {
@@ -21,6 +27,9 @@ function db_disconnect($connection)
     }
 }
 
+/**
+ * escape string function
+ */
 function db_escape($connection, $string)
 {
     return mysqli_real_escape_string($connection, $string);
@@ -36,6 +45,9 @@ function confirm_db_connect()
     }
 }
 
+/**
+ * check return result of SQL query
+ */
 function confirm_result_set($result_set)
 {
     if (!$result_set) {
