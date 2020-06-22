@@ -2,13 +2,10 @@
 require_once '../../private/initialize.php';
 
 if (is_post_request()) {
-//    $membership = [];
-//    $membership['username'] = $_POST['username'];
-//    $membership['email'] = $_POST['email'];
-    $topTen = validate_email($_POST['email']);
+    $result = validate_email($_POST['email']);
 
-    if (!empty($topTen)) {
-        $errors = $topTen;
+    if (!empty($result)) {
+        $errors = $result;
     } else {
         $membership = find_membership_by_email($_POST['email']);
         if ($membership != null) {
@@ -34,9 +31,9 @@ require SHARED_PATH . '/page_header.php';
     <div class="container">
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Please Enter Your Suscribe Email" name="email" required>
+        <input type="text" title="Email. " aria-label="Please input subscriber's email, " name="email" required>
 
-        <button type="submit">Unsubscribe</button>
+        <button type="submit" title="Click unsubscirbe button and back to home page">Unsubscribe</button>
 
     </div>
 
@@ -45,5 +42,12 @@ require SHARED_PATH . '/page_header.php';
     </div>
 </form>
 
+<script>
+    //if errors div exists, tab focus on it
+    var errorDiv = document.getElementById("errors");
+    if (errorDiv!=null) {
+        errorDiv.focus();
+    }
+</script>
 
 <?php require SHARED_PATH . '/page_footer.php'; ?>

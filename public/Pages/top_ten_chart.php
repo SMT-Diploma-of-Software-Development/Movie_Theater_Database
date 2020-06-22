@@ -1,6 +1,5 @@
 <?php
 require_once '../../private/initialize.php';
-require SHARED_PATH . '/page_header.php';
 ?>
 <?php
 $topTen = find_top_ten_movies();
@@ -115,12 +114,8 @@ $currentTime = time();
 //$imgName = 'chart' . $currentTime . '.png';
 $imgName = 'chart.png';
 imagepng($chart, $imgName);
+// add ? and time behind img URL enforce browser update chart when chart is changed
 echo "<img src='" . $imgName . "?" . time() . "' style='width:100%'' onclick='onClick(this)' class='w3-hover-opacity' alt='Top ten Chart' id='topTenImg'>";
 
 imagedestroy($chart);
-?>
-</body>
-</html>
-<?php
-db_disconnect($db);
 ?>

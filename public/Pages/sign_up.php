@@ -8,7 +8,7 @@ if (is_post_request()) {
 
 
     if (!isset($_POST['monthly_newsletter']) && !isset($_POST['newsflash'])) {
-        $errors[] = "at least select one suscribe plan";
+        $errors[] = "at least select one subscribe plan";
     } else {
         if (isset($_POST['monthly_newsletter'])) {
             $membership['monthly_newsletter'] = 1;
@@ -39,18 +39,24 @@ require SHARED_PATH . '/page_header.php';
     <div class="imgcontainer">
         <img src="../img/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
-    <?php echo display_errors($errors); ?>
+    <?php
+    if (!empty($errors)) {
+        echo display_errors($errors);
+    }
+    ?>
     <div class="container">
         <label for="username"><b>User Name</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
+        <input type="text" title=" Username. " name="username" aria-label="Please input subscriber's name, " required>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input type="text" title=" Email. " name="email" aria-label="Please input subscriber's email, " required>
         <label>
-            <input id='monthly_newsletter' type="checkbox" checked="checked" name="monthly_newsletter"> Monthly Newsletter
-            <input type="checkbox" checked="checked" name="newsflash"> Newsflash
+            <input id='monthly_newsletter' type="checkbox" checked="checked" name="monthly_newsletter" aria-label="Subscribe monthly newsletter content, "> Monthly Newsletter
         </label>
-        <button type="submit">Subscribe</button>
+        <label>
+            <input id='newsflash' type="checkbox" checked="checked" name="newsflash" aria-label="Subscribe newsflash content, "> Newsflash
+        </label>
+        <button type="submit" onclick="subscribeButtonClick()">Subscribe</button>
 
     </div>
 
@@ -60,5 +66,13 @@ require SHARED_PATH . '/page_header.php';
     </div>
 </form>
 
+<script>
+    // if error div is exists tab focus it
+    var errorDiv = document.getElementById("errors");
+    if (errorDiv!=null) {
+        errorDiv.focus();
+    }
+
+</script>
 
 <?php require SHARED_PATH . '/page_footer.php'; ?>

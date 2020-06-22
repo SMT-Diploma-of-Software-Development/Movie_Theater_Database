@@ -5,9 +5,8 @@ require_once '../../private/initialize.php';
 
 <!-- insert page header -->
 <?php require SHARED_PATH . '/page_header.php'; ?>
-<!--<meta http-equiv="refresh" content="1" >-->
+
 <!-- Navbar (sit on top) (Responsive (less than 601px hide bar)) -->
-<!--<meta http-equiv="refresh" content="2" >-->
 <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
         <a href="#home" class="w3-bar-item w3-button w3-wide">Home</a>
@@ -40,7 +39,7 @@ require_once '../../private/initialize.php';
     <div class="w3-display-left w3-text-white" style="padding:48px">
         <span class="w3-jumbo w3-hide-small">Movie Theater</span><br>
         <span class="w3-xxlarge w3-hide-large w3-hide-medium">Movie Theater Small Screen</span><br>
-        <p><a href="#search" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Start Search</a></p>
+        <p><a href="#search" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" aria-label="search page">Start Search</a></p>
     </div>
     <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -64,18 +63,18 @@ require_once '../../private/initialize.php';
             <form class="w3-container" action="<?php echo url_for_public('/Pages/search_movie.php'); ?>" method="post">
                 <p>
                     <label class="w3-text-brown"><b>Title</b></label>
-                    <input class="w3-input w3-border w3-sand" name="title" type="text"></p>
+                    <input class="w3-input w3-border w3-sand" title="Input movie title" aria-label="Please input movie title you want to search, " name="title" type="text"></p>
                 <p>
                     <label class="w3-text-brown"><b>Rating</b></label>
-                    <input class="w3-input w3-border w3-sand" name="rating" type="text"></p>
+                    <input class="w3-input w3-border w3-sand" title="Input movie rating"  aria-label="Please input movie rating you want to search, " name="rating" type="text"></p>
                 <p>
                     <label class="w3-text-brown"><b>Year</b></label>
-                    <input class="w3-input w3-border w3-sand" name="year" type="text"></p>
+                    <input class="w3-input w3-border w3-sand" title="Input movie year" aria-label="Please input movie year you want to search, " name="year" type="text"></p>
                 <p>
                     <label class="w3-text-brown"><b>genre</b></label>
-                    <input class="w3-input w3-border w3-sand" name="genre" type="text"></p>
+                    <input class="w3-input w3-border w3-sand" title="Input movie genre" aria-label="Please input movie genre you want to search, " name="genre" type="text"></p>
                 <p>
-                    <button class="w3-btn w3-brown" id="searchBtn" type="submit">Search</button></p>
+                    <button class="w3-btn w3-brown" id="searchBtn" type="submit" aria-label="show search result">Search</button></p>
             </form>
         </div>
     </div>
@@ -93,7 +92,7 @@ require_once '../../private/initialize.php';
 
 
         <br>
-        <a href="<?php echo url_for_public('/Pages/top_ten_list.php'); ?>" class="w3-button w3-light-grey">Top Ten List</a>
+        <a href="<?php echo url_for_public('/Pages/top_ten_list.php'); ?>" class="w3-button w3-light-grey" aria-label="show top ten list result">Top Ten List</a>
 
     </div>
 </div>
@@ -118,10 +117,14 @@ require_once '../../private/initialize.php';
         <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
         <br>
         <form action="#contact">
-            <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-            <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-            <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-            <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+            <label for="Name"><b>Name</b></label>
+            <p><input class="w3-input w3-border" type="text" title="Name" required name="Name"></p>
+            <label for="Email"><b>Email</b></label>
+            <p><input class="w3-input w3-border" type="text" title="Email" required name="Email"></p>
+            <label for="Subject"><b>Subject</b></label>
+            <p><input class="w3-input w3-border" type="text" title="Subject" required name="Subject"></p>
+            <label for="Message"><b>Message</b></label>
+            <p><input class="w3-input w3-border" type="text" title="Message" required name="Message"></p>
             <p>
                 <button class="w3-button w3-black" type="submit">
                     <i class="fa fa-paper-plane"></i> SEND MESSAGE
@@ -132,17 +135,22 @@ require_once '../../private/initialize.php';
         <img src="../img/theater.png" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
+
+    /*
+     update top ten chart every 5 sec
+     */
     var $topTenChart = $("#topTenChart");
     setInterval(function () {
-//        $("#topTenImg").remove();
-    $topTenChart.hide();
-    $topTenChart.fadeIn( "slow", function() {});
+        $topTenChart.hide();
+        $topTenChart.fadeIn("slow", function () {});
         $topTenChart.load("<?php echo url_for_public('/Pages/top_ten_chart.php'); ?>");
     }, 5000);
     $topTenChart.hide();
-    $topTenChart.fadeIn( "slow", function() {});
+    $topTenChart.fadeIn("slow", function () {});
+
+
 </script>
 
 <?php require SHARED_PATH . '/page_footer.php'; ?>

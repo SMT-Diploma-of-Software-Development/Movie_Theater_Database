@@ -55,7 +55,7 @@ if ($_SESSION['account']['username'] == "admin") {
             </div>
 
             <?php
-            if(isset($_POST['username'])){
+            if(isset($_POST['username'])) {
                 deleteMember($_POST['username'], $_POST['email']);
             }
 

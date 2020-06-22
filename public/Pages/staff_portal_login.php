@@ -30,8 +30,8 @@ require_once '../../private/query_functions_portal.php';
         session_start();
 
         //check session
-        if(isset($_SESSION['account'])){
-            if($_SESSION['account']['username']=="admin"){
+        if(isset($_SESSION['account'])) {
+            if($_SESSION['account']['username']=="admin") {
                 header("Location: staff_portal_admin.php");
                 exit();
             }
