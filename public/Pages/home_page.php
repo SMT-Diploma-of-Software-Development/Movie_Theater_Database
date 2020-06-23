@@ -92,7 +92,7 @@ require_once '../../private/initialize.php';
 
 
         <br>
-        <a href="<?php echo url_for_public('/Pages/top_ten_list.php'); ?>" class="w3-button w3-light-grey" aria-label="show top ten list result">Top Ten List</a>
+        <a href="<?php echo url_for_public('/Pages/top_ten_list.php'); ?>" class="w3-button w3-light-grey" aria-label="show top ten movie list result">Top Ten List</a>
 
     </div>
 </div>

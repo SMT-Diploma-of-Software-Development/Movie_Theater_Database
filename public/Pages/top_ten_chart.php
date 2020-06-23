@@ -115,7 +115,7 @@ $currentTime = time();
 $imgName = 'chart.png';
 imagepng($chart, $imgName);
 // add ? and time behind img URL enforce browser update chart when chart is changed
-echo "<img src='" . $imgName . "?" . time() . "' style='width:100%'' onclick='onClick(this)' class='w3-hover-opacity' alt='Top ten Chart' id='topTenImg'>";
+echo "<img src='" . $imgName . "?" . time() . "' style='width:100%'' onclick='onClick(this)' class='w3-hover-opacity' alt='Top ten movie Chart' id='topTenImg'>";
 
 imagedestroy($chart);
 ?>
