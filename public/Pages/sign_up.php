@@ -46,10 +46,10 @@ require SHARED_PATH . '/page_header.php';
     ?>
     <div class="container">
         <label for="username"><b>User Name</b></label>
-        <input type="text" title=" Username. " name="username" aria-label="Please input subscriber's name, " required>
+        <input type="text" title="Input Username" name="username" aria-label="Please input subscriber's name, " required>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" title=" Email. " name="email" aria-label="Please input subscriber's email, " required>
+        <input type="text" title="Input Email" name="email" aria-label="Please input subscriber's email, " required>
         <label>
             <input id='monthly_newsletter' type="checkbox" checked="checked" name="monthly_newsletter" aria-label="Subscribe monthly newsletter content, "> Monthly Newsletter
         </label>
@@ -62,7 +62,7 @@ require SHARED_PATH . '/page_header.php';
 
 
     <div class="container" style="background-color:#f1f1f1">
-        <a href="<?php echo url_for_public('/Pages/unsubscribe.php'); ?>" type="button" class="cancelbtn">Unsubscribe</a>
+        <a href="<?php echo url_for_public('/Pages/unsubscribe.php'); ?>" title="Guide to unsubscribe page" type="button" class="cancelbtn">Unsubscribe</a>
     </div>
 </form>
 

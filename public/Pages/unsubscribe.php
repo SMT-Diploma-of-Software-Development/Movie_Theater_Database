@@ -31,9 +31,9 @@ require SHARED_PATH . '/page_header.php';
     <div class="container">
 
         <label for="email"><b>Email</b></label>
-        <input type="text" title="Email. " aria-label="Please input subscriber's email, " name="email" required>
+        <input type="text" title="Input Email." aria-label="Please input subscriber's email, " name="email" required>
 
-        <button type="submit" title="Click unsubscirbe button and back to home page">Unsubscribe</button>
+        <button type="submit" title="Click Unsubscribe button and back to home page">Unsubscribe</button>
 
     </div>
 
